@@ -15,4 +15,8 @@ export class StorageService {
   setItem(key: string, value: any){
     return window.sessionStorage[key] = JSON.stringify(value);
   }
+
+  clear(key: string){
+    return window.sessionStorage.removeItem(key);
+  }
 }

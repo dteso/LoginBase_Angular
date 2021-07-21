@@ -24,11 +24,19 @@
         <div class="mt-5 w-100 center">
           <button type="button" class="btn btn-primary w-100" (click)="register()">Register</button>
         </div>
-        <div class="mt-1 w-100 center">
+
+        <div *ngIf="!isLoggedin" class="mt-1 w-100 center">
           <button type="button" class="btn btn-info w-100" (click)="login()">Login</button>
         </div>
-        <div class="mt-1 w-100 center">
-          <button type="button" class="btn btn-light w-100">Google Sign In</button>
+        <div *ngIf="isLoggedin" class="mt-1 w-100 center">
+          <button type="button" class="btn btn-info w-100" (click)="logout()">Log Out</button>
+        </div>
+
+        <div *ngIf="!isGoogleLoggedin" class="mt-1 w-100 center">
+          <button type="button" class="btn btn-light w-100" (click)="loginWithGoogle()">Google Sign In</button>
+        </div>
+        <div *ngIf="isGoogleLoggedin" class="mt-1 w-100 center">
+          <button type="button" class="btn btn-light w-100" (click)="logOutGoogle()">Google Sign Out</button>
         </div>
 
       </div>
