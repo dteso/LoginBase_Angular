@@ -10,6 +10,7 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { StorageService } from '../../services/storage/storage.service';
 import { catchError, map } from 'rxjs/operators';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -46,9 +47,11 @@ export class HttpInterceptorService implements HttpInterceptor {
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
+          if(event.status === 200){
+            this.showPrompt('success', `Response Status: ${event.status}`, "Request successfully carried out");
+          };
           this.removeRequest(request);
         }
-
         return event;
       }),
       catchError((error: HttpErrorResponse) => {
@@ -68,9 +71,10 @@ export class HttpInterceptorService implements HttpInterceptor {
       // client-side error
       message = `Error: ${error.error.message}`;
     } else if (error instanceof HttpErrorResponse) {
-      if (error.url.indexOf('login') > -1) {
-        message = 'Login Error';
-      } else if (error.status > -1) {
+      // if (error.url.indexOf('login') > -1) {
+      //   message = 'Login Error';
+      // } else
+      if (error.status > -1) {
         message = this.checkErrorStatus(error);
       } else {
         if (error.statusText && !error.url.includes('changePassword')) {
@@ -92,6 +96,7 @@ export class HttpInterceptorService implements HttpInterceptor {
 
   private checkErrorStatus(e) {
     let msg: string;
+    console.log('STATUS: ' + e);
     switch (e.status) {
       case 0:
         msg = 'Connection error';
@@ -122,7 +127,16 @@ export class HttpInterceptorService implements HttpInterceptor {
         msg = 'Bad request';
         break;
     }
+    this.showPrompt('error', `Response Status: ${e.status}`, msg);
     return msg;
+  }
+
+  showPrompt(icon: any, title: any, text: any) {
+    Swal.fire({
+      icon,
+      title,
+      text,
+    });
   }
 
   private manageInternalErrors(internalError) {
