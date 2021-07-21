@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api/api.service';
+import { StorageService } from 'src/app/services/storage/storage.service';
 
 interface Auth{
   name: String;
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly apiService: ApiService,
+    private readonly storage: StorageService,
   ) {
     this.loginForm = this.formBuilder.group({
       user: ['', Validators.required],
@@ -45,6 +47,24 @@ export class LoginComponent implements OnInit {
       this.apiService.post("users",this.loginUser).subscribe( res=> {
         console.log(res);
 
+      });
+      this.loginForm.reset();
+    }
+    return;
+  }
+
+
+  login(){
+    if(!this.loginForm.invalid){
+      this.loginUser = {
+        name: this.loginForm.controls.user.value,
+        password: this.loginForm.controls.password.value,
+        email: this.loginForm.controls.email.value
+      }
+      console.info(this.loginUser);
+      this.apiService.post("login",this.loginUser).subscribe( res=> {
+        console.log(res);
+        this.storage.setItem("USER",res);
       });
       this.loginForm.reset();
     }
