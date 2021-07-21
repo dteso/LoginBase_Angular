@@ -1,0 +1,39 @@
+
+
+<div class="container" style="display: flex; justify-content: center;" >
+  <div class="card mt-5" style="background-color: gray; width: 20rem;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+    <div class="card-body">
+      <h3 class="card-title" style="text-align: center;">LOGIN APP</h3>
+      <div class="container mb-3">
+        <form [formGroup]="loginForm">
+          <div class="mb-3">
+            <label for="emailInput" class="form-label">User</label>
+            <input type="email" class="form-control" id="emailInput" formControlName="user" placeholder="User">
+          </div>
+          <div class="mb-3">
+            <label for="emailInput" class="form-label">Email</label>
+            <input type="email" class="form-control" id="emailInput" formControlName="email" placeholder="e-mail">
+          </div>
+          <div class="mb-3">
+            <label for="passInput" class="form-label">Password</label>
+            <input type="password" class="form-control" id="passInput" formControlName="password" placeholder="Password">
+          </div>
+        </form>
+
+        <div class="mt-1" style="width: 100%; text-align: center;">
+          <button type="button" class="btn btn-primary" style="width: 100%;" (click)="register()">Register</button>
+        </div>
+        <div class="mt-1" style="width: 100%; text-align: center;">
+          <button type="button" class="btn btn-info" style="width: 100%;">Login</button>
+        </div>
+        <div class="mt-1" style="width: 100%; text-align: center;">
+          <button type="button" class="btn btn-light" style="width: 100%;">Google Sign In</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
