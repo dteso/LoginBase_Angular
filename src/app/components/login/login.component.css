@@ -1,0 +1,35 @@
+.gradient-background{
+  background: -webkit-linear-gradient(-90deg, #1b8cf7 20%, #100146 100%);
+}
+
+.flex-center{
+  display: flex;
+  justify-content: center;
+}
+
+.login-background{
+  background-color: gray;
+  width: 20rem;
+}
+
+
+h1{
+  color: white;
+}
+
+label{
+  color: white;
+}
+
+.w-100-center{
+  width: 100%;
+  text-align: center;
+}
+
+w-100{
+  width: 100%;
+}
+
+.center{
+  text-align: center;
+}

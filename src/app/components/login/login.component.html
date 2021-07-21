@@ -1,11 +1,11 @@
 
 
-<div class="container" style="display: flex; justify-content: center;" >
-  <div class="card mt-5" style="background-color: gray; width: 20rem;">
+<div class="container flex-center">
+  <div class="card mt-5 login-background">
     <!-- <img src="..." class="card-img-top" alt="..."> -->
-    <div class="card-body">
-      <h3 class="card-title" style="text-align: center;">LOGIN APP</h3>
-      <div class="container mb-3">
+    <div class="card-body gradient-background">
+      <h1 class="card-title center">LOGIN APP</h1>
+      <div class="container mb-3 mt-3">
         <form [formGroup]="loginForm">
           <div class="mb-3">
             <label for="emailInput" class="form-label">User</label>
@@ -21,14 +21,14 @@
           </div>
         </form>
 
-        <div class="mt-1" style="width: 100%; text-align: center;">
-          <button type="button" class="btn btn-primary" style="width: 100%;" (click)="register()">Register</button>
+        <div class="mt-5 w-100 center">
+          <button type="button" class="btn btn-primary w-100" (click)="register()">Register</button>
         </div>
-        <div class="mt-1" style="width: 100%; text-align: center;">
-          <button type="button" class="btn btn-info" style="width: 100%;">Login</button>
+        <div class="mt-1 w-100 center">
+          <button type="button" class="btn btn-info w-100" (click)="login()">Login</button>
         </div>
-        <div class="mt-1" style="width: 100%; text-align: center;">
-          <button type="button" class="btn btn-light" style="width: 100%;">Google Sign In</button>
+        <div class="mt-1 w-100 center">
+          <button type="button" class="btn btn-light w-100">Google Sign In</button>
         </div>
 
       </div>
