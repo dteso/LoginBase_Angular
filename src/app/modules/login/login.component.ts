@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
-import { ApiService } from 'src/app/services/api/api.service';
-import { StorageService } from 'src/app/services/storage/storage.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 interface Auth{
   name: String;
@@ -22,18 +22,19 @@ export class LoginComponent implements OnInit {
   socialUser: SocialUser;
   isLoggedin: boolean;
   isGoogleLoggedin: boolean;
+  submitted = false;
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly apiService: ApiService,
-    private readonly storage: StorageService,
-    private readonly socialAuthService: SocialAuthService
+    private readonly authService: AuthService,
+    private readonly socialAuthService: SocialAuthService,
+    private readonly router: Router
   ) {
     this.loginForm = this.formBuilder.group({
-      user: ['', Validators.required],
+      name: ['', Validators.required],
       password: ['', Validators.required],
       email: ['', Validators.required],
-    })
+    });
    }
 
   ngOnInit(): void {
@@ -47,15 +48,13 @@ export class LoginComponent implements OnInit {
   register(){
     if(!this.loginForm.invalid){
       this.loginUser = {
-        name: this.loginForm.controls.user.value,
+        name: this.loginForm.controls.name.value,
         password: this.loginForm.controls.password.value,
         email: this.loginForm.controls.email.value
       }
       console.info(this.loginUser);
-      this.apiService.post("users",this.loginUser).subscribe( res=> {
-        console.log(res);
-        this.isLoggedin=true;
-      });
+      this.authService.registerAuth(this.loginUser);
+      this.isLoggedin = true;
       this.loginForm.reset();
     }
     return;
@@ -63,28 +62,26 @@ export class LoginComponent implements OnInit {
 
 
   login(){
+    this.submitted=true;
     if(!this.loginForm.invalid){
       this.loginUser = {
-        name: this.loginForm.controls.user.value,
+        name: this.loginForm.controls.name.value,
         password: this.loginForm.controls.password.value,
         email: this.loginForm.controls.email.value
       }
       console.info(this.loginUser);
-      this.apiService.post("login",this.loginUser).subscribe( res=> {
-        console.log(res);
-        this.storage.setItem("USER",res);
-        this.isLoggedin = true;
-      }, (error)=>{
-        console.log(`Error: >>> ${error}`);
-      });
+      this.authService.tryAuth(this.loginUser);
       this.loginForm.reset();
+      this.submitted = false;
     }
+    console.log(this.loginForm);
     return;
   }
 
   logout(): void {
-    this.storage.clear('USER');
+    this.authService.clearAuth();
     this.isLoggedin = false;
+    this.router.navigate(['/']);
   }
 
   loginWithGoogle(): void {

@@ -6,6 +6,7 @@ import {
   HttpRequest,
   HttpErrorResponse,
   HttpResponse,
+  HttpStatusCode,
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { StorageService } from '../../services/storage/storage.service';
@@ -47,7 +48,7 @@ export class HttpInterceptorService implements HttpInterceptor {
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
-          if(event.status === 200){
+          if(event.status === HttpStatusCode.Ok){
             this.showPrompt('success', `Response Status: ${event.status}`, "Request successfully carried out");
           };
           this.removeRequest(request);
@@ -96,7 +97,7 @@ export class HttpInterceptorService implements HttpInterceptor {
 
   private checkErrorStatus(e) {
     let msg: string;
-    console.log('STATUS: ' + e);
+    console.log('STATUS: ' + e.status);
     switch (e.status) {
       case 0:
         msg = 'Connection error';
@@ -121,7 +122,7 @@ export class HttpInterceptorService implements HttpInterceptor {
         msg = 'Unprocessable entity';
         break;
       case 500:
-        msg = 'Internl server errror';
+        msg = 'Internal server errror';
         break;
       default:
         msg = 'Bad request';
