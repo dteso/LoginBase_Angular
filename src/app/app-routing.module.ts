@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './routing/guards/auth.guard';
+import { HomeResolver } from './routing/resolvers/home.resolver';
 
 const routes: Routes = [
   {
@@ -11,18 +12,23 @@ const routes: Routes = [
     path: 'home',
     canActivate: [AuthGuard],
     runGuardsAndResolvers: 'always',
+    resolve: {
+      data: HomeResolver
+    },
     loadChildren: () => import('./modules/home/home.module').then( m => m.HomeModule)
   },
   {
-    path: '',
+    path: '' || '**',
     redirectTo: 'login',
     pathMatch: 'full'
-  },
+  }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, {
+      //enableTracing: true,
+      preloadingStrategy: PreloadAllModules})
   ],
   exports: [RouterModule]
 })

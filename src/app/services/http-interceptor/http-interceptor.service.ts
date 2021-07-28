@@ -72,9 +72,6 @@ export class HttpInterceptorService implements HttpInterceptor {
       // client-side error
       message = `Error: ${error.error.message}`;
     } else if (error instanceof HttpErrorResponse) {
-      // if (error.url.indexOf('login') > -1) {
-      //   message = 'Login Error';
-      // } else
       if (error.status > -1) {
         message = this.checkErrorStatus(error);
       } else {

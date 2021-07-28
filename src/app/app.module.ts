@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
+import { HomeResolver } from './routing/resolvers/home.resolver';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { HttpInterceptorService } from './services/http-interceptor/http-interce
     HttpClientModule,
   ],
   providers: [
+    HomeResolver,
     {provide: HTTP_INTERCEPTORS, useClass:HttpInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]

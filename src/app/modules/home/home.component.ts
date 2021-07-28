@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +10,29 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class HomeComponent implements OnInit {
 
+  user:User = {
+    email: "",
+    name: "",
+    role: "",
+    google: false,
+    uid: ""
+  };
+
   constructor(
     private readonly authService: AuthService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly route: ActivatedRoute
   ) { }
 
-  ngOnInit(): void {}
-
+  ngOnInit(): void {
+    this.route.data
+    .subscribe(data => {
+      const routeData: any = data;
+      console.log("DATA in resolver: " + JSON.stringify(routeData));
+      Object.assign(this.user ,JSON.parse(routeData.data).user);
+      console.log(this.user);
+    });
+  }
   logout(): void {
     this.authService.clearAuth();
     this.router.navigate(['/']);

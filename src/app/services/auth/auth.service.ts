@@ -24,6 +24,7 @@ export class AuthService {
 
 
   get isLoggedIn(){
+    // TODO: Sólo se está comprobando que exista un token, no que sea válido.
     if(this.storageService.getItem('USER')){
       this.isAuthenticated$ = of(true);
     }
