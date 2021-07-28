@@ -24,25 +24,29 @@ export class LoginComponent implements OnInit {
   isGoogleLoggedin: boolean;
   submitted = false;
 
+  registerView = false;
+  loginView = false;
+
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly authService: AuthService,
     private readonly socialAuthService: SocialAuthService,
     private readonly router: Router
   ) {
+    this.socialAuthService.authState.subscribe((user) => {
+      this.socialUser = user;
+      this.isGoogleLoggedin = (user != null);
+      console.log(this.socialUser);
+    });
     this.loginForm = this.formBuilder.group({
-      name: ['', Validators.required],
+      name: [{value: '', disabled: this.loginView}, Validators.required],
       password: ['', Validators.required],
       email: ['', Validators.required],
     });
    }
 
   ngOnInit(): void {
-    this.socialAuthService.authState.subscribe((user) => {
-      this.socialUser = user;
-      this.isGoogleLoggedin = (user != null);
-      console.log(this.socialUser);
-    });
+
   }
 
   register(){
@@ -92,6 +96,23 @@ export class LoginComponent implements OnInit {
   logOutGoogle(): void {
     this.socialAuthService.signOut();
     this.isGoogleLoggedin=false;
+  }
+
+  showRegisterView(){
+    this.loginForm.controls.name.setValue('');
+    this.loginView = false;
+    this.registerView = true;
+  }
+
+  showLoginView(){
+    this.loginView = true;
+    this.registerView = false;
+    this.loginForm.controls.name.disable();
+  }
+
+  resotoreViews(){
+    this.loginView = false;
+    this.registerView = false;
   }
 
 }

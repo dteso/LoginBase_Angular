@@ -37,6 +37,7 @@ export class AuthService {
       this.isAuthenticated$ = of(true);
       this.currentUser$ = of(res.user);
       this.currentToken = res.token;
+      this.router.navigate(['/home']);
     });
   }
 

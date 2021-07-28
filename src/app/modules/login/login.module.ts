@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from 'src/app/services/api/api.service';
 import { StorageService } from 'src/app/services/storage/storage.service';
 import { GoogleLoginProvider, SocialAuthService, SocialAuthServiceConfig } from 'angularx-social-login';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -32,7 +33,8 @@ import { GoogleLoginProvider, SocialAuthService, SocialAuthServiceConfig } from 
     },
     SocialAuthService,
     ApiService,
-    StorageService
+    StorageService,
+    AuthService
   ]
 })
 export class LoginModule { }
