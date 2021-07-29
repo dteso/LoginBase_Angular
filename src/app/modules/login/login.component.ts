@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
+    this.authService.clearAuth();
   }
 
   register(){
@@ -89,8 +89,14 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    this.isGoogleLoggedin=true;
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then( res => {
+      this.isGoogleLoggedin=true;
+      let id_token = res.idToken;
+      console.log("ID_TOKEN: ", id_token);
+      this.authService.tryGoogleAuth(id_token);
+      this.router.navigate(['/home']);
+    });
+    
   }
 
   logOutGoogle(): void {

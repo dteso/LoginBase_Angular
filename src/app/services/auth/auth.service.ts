@@ -50,7 +50,17 @@ export class AuthService {
       this.currentToken = res.token;
       this.router.navigate(['/home']);
     });
-    return of(false);
+  }
+
+  tryGoogleAuth(id_token){
+    this.apiService.post("login/google", {id_token}).subscribe( res=> {
+      console.log(res);
+      this.storageService.setItem("USER",res);
+      this.isAuthenticated$ = of(true);
+      this.currentUser$ = of(res.user);
+      this.currentToken = res.token;
+      this.router.navigate(['/home']);
+    });
   }
 
   clearAuth(){

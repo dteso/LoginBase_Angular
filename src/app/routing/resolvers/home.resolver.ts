@@ -11,8 +11,8 @@ import { Observable, of } from 'rxjs';
 })
 export class HomeResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    console.log("Route: " ,route);
-    console.log("State: " ,state);
+    // console.log("Route: " ,route);
+    // console.log("State: " ,state);
     const user = window.sessionStorage.getItem("USER");
     return of(user);
   }

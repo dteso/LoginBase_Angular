@@ -3,15 +3,20 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand p-2" href="#">
-    <img src="../../../favicon.ico" width="30" height="30" alt="">
+    <img [src]="user.img" width="30" height="30" alt="" style=" border-radius: 50%">
   </a>
 
-  <a class="navbar-brand" href="#">App</a>
+  <div style="width: 100%;">
+    {{user.name}}
+  </div>
+
+  <!-- <a class="navbar-brand" href="#">{{user.name}}</a>
+  <a style="color: white;">{{user.email}}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
+  </button> -->
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home</a>
@@ -29,13 +34,21 @@
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
-  </div>
-  <div class="nav-item" style="cursor: pointer; margin-right: 2rem;">
-    <button class="btn nav-button btn-danger" (click)="logout()">
+  </div> -->
+  <div class="nav-item" style="justify-content: right; width: 100%;">
+    <button class="btn nav-button btn-danger" style="cursor: pointer; margin-left: 90%;" (click)="logout()">
       Logout
     </button>
   </div>
 
 </nav>
 
-<h1>Home</h1>
+<div class="container">
+  <div style="width: 100%; text-align: center;">
+    <img [src]="user.img" width="150" height="150" alt="" style="margin-top: 2rem; border-radius: 50%">
+    <div style="width: 100%; color: black;">
+      {{user.email}}
+    </div>
+  </div>
+</div>
+

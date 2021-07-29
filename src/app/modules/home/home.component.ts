@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
     email: "",
     name: "",
     role: "",
+    img: "favicon.ico",
     google: false,
     uid: ""
   };
@@ -28,9 +29,9 @@ export class HomeComponent implements OnInit {
     this.route.data
     .subscribe(data => {
       const routeData: any = data;
-      console.log("DATA in resolver: " + JSON.stringify(routeData));
+      //console.log("DATA in resolver: " + JSON.stringify(routeData));
       Object.assign(this.user ,JSON.parse(routeData.data).user);
-      console.log(this.user);
+      //console.log(this.user);
     });
   }
   logout(): void {

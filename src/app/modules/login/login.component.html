@@ -37,22 +37,22 @@
         </form>
 
         <!-- Botones de renderización de vistas -->
-        <div class="mt-5 w-100 center" *ngIf="!registerView && !loginView">
-          <button type="button" class="btn btn-primary w-100" (click)="showRegisterView()">REGISTER</button>
+        <div class="mt-5 w-100 center" *ngIf="!registerView && !loginView && !isGoogleLoggedin">
+          <button type="button" class="btn btn-primary w-100" (click)="showRegisterView()">Register</button>
         </div>
 
-        <div class="mt-1 w-100 center" *ngIf="!registerView && !loginView">
-          <button type="button" class="btn btn-info w-100" (click)="showLoginView()">LOGIN</button>
+        <div class="mt-1 w-100 center" *ngIf="!registerView && !loginView && !isGoogleLoggedin">
+          <button type="button" class="btn btn-info w-100" (click)="showLoginView()">Log In</button>
         </div>
 
         <!-- Botones para ejecución de registro y login -->
         <div class="mt-5 w-100 center" *ngIf="registerView">
-          <button type="button" class="btn btn-primary w-100" (click)="register()">Finish Register</button>
+          <button type="button" class="btn btn-primary w-100" (click)="register()">OK</button>
         </div>
 
         <div *ngIf="loginView">
           <div *ngIf="!isLoggedin" class="mt-1 w-100 center">
-            <button type="button" class="btn btn-info w-100" (click)="login()">Go</button>
+            <button type="button" class="btn btn-info w-100" (click)="login()">OK</button>
           </div>
           <div *ngIf="isLoggedin" class="mt-1 w-100 center">
             <button type="button" class="btn btn-info w-100" (click)="logout()">Log Out</button>
@@ -60,10 +60,10 @@
         </div>
 
 
-        <div *ngIf="!isGoogleLoggedin" class="mt-1 w-100 center">
+        <div *ngIf="!isGoogleLoggedin && !loginView && !registerView" class="mt-1 w-100 center">
           <button type="button" class="btn btn-light w-100" (click)="loginWithGoogle()">Google Sign In</button>
         </div>
-        <div *ngIf="isGoogleLoggedin" class="mt-1 w-100 center">
+        <div *ngIf="isGoogleLoggedin && !loginView && !registerView" class="mt-1 w-100 center">
           <button type="button" class="btn btn-light w-100" (click)="logOutGoogle()">Google Sign Out</button>
         </div>
 
