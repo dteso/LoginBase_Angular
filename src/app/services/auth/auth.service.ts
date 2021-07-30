@@ -35,6 +35,7 @@ export class AuthService {
   registerAuth(registerUser){
     this.apiService.post("users",registerUser).subscribe( res=> {
       console.log(res);
+      this.storageService.setItem("USER",res);
       this.isAuthenticatedSubject$.next(true);
       this.currentUser$ = of(res.user);
       this.currentToken = res.token;
