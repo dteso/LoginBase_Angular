@@ -1,1 +1,26 @@
-<router-outlet></router-outlet>
+<div class="altura">
+    <div class="altura" fxLayout="row">
+        <div class="menu" *ngIf="logged">
+            <h4 style="color: rgb(77, 3, 77); margin-bottom: 5REM;">MY4PP</h4>
+            <hr style="color: lightblue;">
+            <button class="btn btn-outline-light btn-outline mb-3 w-100"> Option 1 </button>
+            <button class="btn btn-outline-light btn-outline mb-3 w-100"> Option 2 </button>
+            <button class="btn btn-outline-light btn-outline mb-3 w-100"> Option 3 </button>
+            <button class="btn btn-outline-light btn-outline mb-3 w-100"> Option 4 </button>
+            <button class="btn btn-outline-light btn-outline mb-3 w-100"> Option 5 </button>
+        </div>
+        <div fxLayout="column" class="altura">
+            <div fxLayout="row" class="cabecera" *ngIf="logged">
+                <h1 class="mt-3"> MY4PP </h1>
+            </div>
+            <div fxLayout="row" class="contenido flex-center" style="vertical-align: middle;">
+                <!-- <h1> Contenido </h1> -->
+                <router-outlet></router-outlet>
+            </div>
+            <div fxLayout="column" class="footer" *ngIf="logged">
+                <a> www.digitalophy.com </a>
+                <h6>2021</h6>
+            </div>
+        </div>
+    </div>
+</div>

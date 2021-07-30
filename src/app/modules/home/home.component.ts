@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
     email: "",
     name: "",
     role: "",
-    img: "favicon.ico",
+    img: "../../assets/person.png",
     google: false,
     uid: ""
   };

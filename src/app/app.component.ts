@@ -1,18 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './services/auth/auth.service';
 import { StorageService } from './services/storage/storage.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'login-app';
+  logged: boolean;
 
   constructor(
     private readonly storageService: StorageService,
-    private router: Router
+    private router: Router,
+    private readonly authService: AuthService
   ){
-    if(!this.storageService.getItem('USER')) this.router.navigate(['/login'])
+    if(!this.storageService.getItem('USER')) this.router.navigate(['/login']);
+  }
+
+  ngOnInit(){
+    this.authService.isAuthenticated$.subscribe( isLogged => this.logged = isLogged);
   }
 }

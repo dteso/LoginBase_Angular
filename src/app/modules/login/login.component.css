@@ -1,5 +1,7 @@
 .gradient-background{
-  background: -webkit-linear-gradient(-90deg, #1b8cf7 20%, #100146 100%);
+  background: transparent;
+  border:solid 0.1rem rgb(233, 229, 233);
+  border-radius: 2%;
 }
 
 .flex-center{
@@ -8,10 +10,10 @@
 }
 
 .login-background{
-  background-color: gray;
+  margin-top: 40%;
+  background-color: transparent;
   width: 20rem;
 }
-
 
 h1{
   color: white;
@@ -26,7 +28,7 @@ label{
   text-align: center;
 }
 
-w-100{
+.w-100{
   width: 100%;
 }
 

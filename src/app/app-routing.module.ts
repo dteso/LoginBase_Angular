@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './routing/guards/auth.guard';
 import { HomeResolver } from './routing/resolvers/home.resolver';
+const user = window.sessionStorage['USER'];
 
 const routes: Routes = [
   {
@@ -19,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: '' || '**',
-    redirectTo: 'login',
+    redirectTo: user? 'home' : 'login',
     pathMatch: 'full'
   }
 ];
