@@ -48,9 +48,9 @@ export class HttpInterceptorService implements HttpInterceptor {
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
-          if(event.status === HttpStatusCode.Ok){
-            this.showPrompt('success', `Response Status: ${event.status}`, "Request successfully carried out");
-          };
+          // if(event.status === HttpStatusCode.Ok){
+          //   this.showPrompt('success', `Response Status: ${event.status}`, "Request successfully carried out");
+          // };
           this.removeRequest(request);
         }
         return event;

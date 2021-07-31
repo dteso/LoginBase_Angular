@@ -13,6 +13,12 @@
   margin-top: 40%;
   background-color: transparent;
   width: 20rem;
+  max-height: min-content;
+  min-width: 20rem !important;
+}
+
+.mw-20{
+  min-width: 20rem;
 }
 
 h1{

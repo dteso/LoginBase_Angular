@@ -10,16 +10,29 @@ import { StorageService } from './services/storage/storage.service';
 export class AppComponent implements OnInit {
   title = 'login-app';
   logged: boolean;
+  isCollapsed = true;
+  user;
 
   constructor(
     private readonly storageService: StorageService,
     private router: Router,
     private readonly authService: AuthService
   ){
-    if(!this.storageService.getItem('USER')) this.router.navigate(['/login']);
+    if(!this.storageService.getItem('USER')) {
+      this.router.navigate(['/login']);
+     }else this.user = this.storageService.getItem('USER').user;
   }
 
   ngOnInit(){
     this.authService.isAuthenticated$.subscribe( isLogged => this.logged = isLogged);
+  }
+
+  toggleCollapse(){
+    this.isCollapsed = !this.isCollapsed;
+    console.log(this.isCollapsed);
+  }
+
+  collapse(){
+    this.isCollapsed = true;
   }
 }

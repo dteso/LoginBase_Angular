@@ -1,48 +1,77 @@
 /* You can add global styles to this file, and also import other style files */
-
-
-.altura{
-    height: 150vh;
+.base{
+    height: 100vh;
     width: 100%;
+    overflow: hidden;
 }
 
 .menu{
-    height: 150vh;
+    height: 100vh;
+    min-height: 100%;
     width: 12rem;
-    background: -webkit-linear-gradient(-90deg, #06427a 20%, #100146 100%);
+    background: -webkit-linear-gradient(-90deg, rgb(10, 106, 119) 20%, #100146 100%);
     text-align: center;
     padding: 1rem;
 }
 
-.cabecera{
+.header{
     height: 15vh;
     width: 100%;
-    background-color: rgb(2, 4, 29);
+    background: black;
+    opacity: 65%;
     color: whitesmoke;
     text-align: center;
     justify-content: center;
+    /* display: inline-table !important; */
 }
 
-.contenido{
-    height: 130vh;
+.main-content{
+    height: 110vh;
     width: 100%;
-    border: solid 1px lightblue;
-    background-image: url('../assets/bg3.jpg');
+    font-family: 'Cairo', cursive;
+    max-height: 130vh;
+    overflow: auto;
 }
 
 .footer{
-    height: 8rem;
+    height: 4rem;
     width: 100%;
-    border: solid 1px lightblue;
     text-align: center;
     vertical-align: middle;
     justify-content: center;
     background-color: rgb(89, 90, 94);
     color: white;
+    opacity: 60%;
+    font-family: 'Cairo', cursive;
 }
 
 
 .flex-center{
     display: flex;
     justify-content: center;
+  }
+
+  .monoton-font{
+    font-family: 'Monoton', cursive;
+  }
+
+  .bungee-font{
+    font-family: 'Bungee', cursive;
+  }
+
+  .cairo-font{
+    font-family: 'Cairo',cursive;
+  }
+
+
+  .major-mono-font{
+    font-family: 'Major Mono Display', monospace;
+  }
+  
+  button{
+    font-family: 'Bungee', cursive; 
+  }
+
+  .videogame-font{
+    font-family: 'Press Start 2P', cursive;
   }
