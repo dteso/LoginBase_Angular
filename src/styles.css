@@ -4,11 +4,40 @@
 
 
 body{
-    background-image: url('./assets/bg3.jpg');
+    background-image: url('./assets/bG8.jpg');
     background-size: cover;
     /* background: -webkit-linear-gradient(-90deg, #223342 20%, #1c1244 100%); */
 }
 
 h2, p, footer{
     font-family: 'Cairo',cursive;
+}
+
+
+.stroke-transparent {
+    -webkit-text-stroke: 1px #000;
+    -webkit-text-fill-color: transparent;
+}
+
+.monoton-font{
+  font-family: 'Monoton', cursive;
+}
+
+.bungee-font{
+  font-family: 'Bungee', cursive;
+}
+
+.cairo-font{
+  font-family: 'Cairo',cursive;
+}
+
+
+.major-mono-font{
+  font-family: 'Major Mono Display', monospace;
+}
+  
+.base{
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
 }

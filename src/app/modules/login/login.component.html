@@ -10,25 +10,27 @@
             <label for="userInput" class="form-label">User</label>
             <input type="text" class="form-control" id="userInput" formControlName="name" placeholder="User">
             <ng-container>
-              <p style="color: rgb(255, 0, 64); font-size: smaller;" *ngIf="loginForm.controls.name.errors && loginForm.controls.name.errors.required && submitted">
+              <p class="validation-message" *ngIf="loginForm.controls.name.errors && loginForm.controls.name.errors.required && submitted">
                 User is required
               </p>
             </ng-container>
           </div>
+
           <div class="mb-3" *ngIf="registerView || loginView">
             <label for="emailInput" class="form-label">Email</label>
             <input type="email" class="form-control" id="emailInput" formControlName="email" placeholder="e-mail">
             <ng-container>
-              <p style="color: rgb(255, 0, 64); font-size: smaller;" *ngIf="loginForm.controls.email.errors && loginForm.controls.email.errors.required && submitted">
+              <p class="validation-message" *ngIf="loginForm.controls.email.errors && loginForm.controls.email.errors.required && submitted">
                 email is required
               </p>
             </ng-container>
           </div>
+          
           <div class="mb-3" *ngIf="registerView || loginView">
             <label for="passInput" class="form-label">Password</label>
             <input type="password" class="form-control" id="passInput" formControlName="password" placeholder="Password">
             <ng-container>
-              <p style="color: rgb(255, 0, 64); font-size: smaller;" *ngIf="loginForm.controls.password.errors && loginForm.controls.password.errors.required && submitted">
+              <p class="validation-message" *ngIf="loginForm.controls.password.errors && loginForm.controls.password.errors.required && submitted">
                 Password is required
               </p>
             </ng-container>

@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
   }
 
   register(){
+    this.submitted=true;
     if(!this.loginForm.invalid){
       this.loginUser = {
         name: this.loginForm.controls.name.value,

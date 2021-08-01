@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
 .base{
     height: 100vh;
     width: 100%;
@@ -8,17 +9,28 @@
 .menu{
     height: 100vh;
     min-height: 100%;
-    width: 12rem;
+    width: 15rem;
     background: -webkit-linear-gradient(-90deg, rgb(10, 106, 119) 20%, #100146 100%);
     text-align: center;
-    padding: 1rem;
+    position: absolute;
+    z-index: 999;
 }
 
 .header{
     height: 15vh;
     width: 100%;
     background: black;
-    opacity: 65%;
+    opacity: 45%;
+    color: whitesmoke;
+    text-align: center;
+    justify-content: center;
+    /* display: inline-table !important; */
+}
+
+.sub-header{
+    height: 8vh;
+    width: 100%;
+    background: black;
     color: whitesmoke;
     text-align: center;
     justify-content: center;
@@ -45,33 +57,11 @@
     font-family: 'Cairo', cursive;
 }
 
-
-.flex-center{
-    display: flex;
-    justify-content: center;
-  }
-
-  .monoton-font{
-    font-family: 'Monoton', cursive;
-  }
-
-  .bungee-font{
-    font-family: 'Bungee', cursive;
-  }
-
-  .cairo-font{
-    font-family: 'Cairo',cursive;
-  }
-
-
-  .major-mono-font{
-    font-family: 'Major Mono Display', monospace;
-  }
-  
-  button{
-    font-family: 'Bungee', cursive; 
-  }
-
-  .videogame-font{
+.videogame-font{
     font-family: 'Press Start 2P', cursive;
-  }
+}
+
+.middle-center{
+    vertical-align: middle; 
+    justify-content: center;
+}
