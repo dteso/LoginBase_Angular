@@ -2,14 +2,14 @@
     <div class="base" fxLayout="row">
         <!--- Menu lateral -->
         <div class="menu animated-fast slideInLeft" fxLayout="column" *ngIf="logged && !isCollapsed">
-            <app-sidebar [user]="user" class="menu p-3"></app-sidebar>
+            <app-sidebar [user]="user" class="menu p-3" (logout)="logout()"></app-sidebar>
         </div>
         <!-- Bloque principal -->
         <div fxLayout="column" class="base">
             <!--- HEADER -->
                 <!-- toolbar -->
                 <div fxLayout="row" class="sub-header" *ngIf="logged">
-                    <app-toolbar [logged]="logged" class="w-100"></app-toolbar>
+                    <app-toolbar [logged]="logged" (logout)="logout()" class="w-100"></app-toolbar>
                 </div>
                 <!-- cabecera -->
                 <div fxLayout="row" class="header" *ngIf="logged">

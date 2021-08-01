@@ -35,4 +35,9 @@ export class AppComponent implements OnInit {
   collapse(){
     this.isCollapsed = true;
   }
+
+  logout(): void {
+    this.authService.clearAuth();
+    this.router.navigate(['/']);
+  }
 }
