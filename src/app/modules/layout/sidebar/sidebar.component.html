@@ -8,11 +8,11 @@
     <p class="whitesmoke">{{user?.name}}</p>
 
     <hr style="color: lightblue;">
-    <button class="btn btn-outline-light mb-3 w-100"> Option 1 </button>
-    <button class="btn btn-outline-light mb-3 w-100"> Option 2 </button>
-    <button class="btn btn-outline-light mb-3 w-100"> Option 3 </button>
-    <button class="btn btn-outline-light mb-3 w-100"> Option 4 </button>
-    <button class="btn btn-outline-light mb-3 w-100"> Option 5 </button>
+    <button class="btn btn-outline-light mb-3 w-100" (click)="navigateToSkills()"> Skills </button>
+    <button class="btn btn-outline-light mb-3 w-100"> Projects </button>
+    <button class="btn btn-outline-light mb-3 w-100"> Devices </button>
+    <button class="btn btn-outline-light mb-3 w-100"> Blog </button>
+    <button class="btn btn-outline-light mb-3 w-100"> Contact </button>
     <button class="btn btn-danger mb-3 w-100" (click)="logoutSubmitted()">
         <i class="fa fa-sign-out exit-btn"></i> Logout
     </button>

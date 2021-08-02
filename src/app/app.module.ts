@@ -9,9 +9,7 @@ import { HomeResolver } from './routing/resolvers/home.resolver';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthService } from './services/auth/auth.service';
 import { SidebarModule } from './modules/layout/sidebar/sidebar.module';
-import { HeaderComponent } from './modules/layout/header/header.component';
 import { HeaderModule } from './modules/layout/header/header.module';
-import { ToolbarComponent } from './modules/layout/toolbar/toolbar.component';
 import { ToolbarModule } from './modules/layout/toolbar/toolbar.module';
 
 @NgModule({

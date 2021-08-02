@@ -1,24 +1,25 @@
 
-<div class="card p-2 mt-5 animated slideInUp" style="background: transparent; border: solid 0.1rem white;">
-  <div class="card-title text-center mt-2"> 
-    <h2>{{user.name}}</h2>
-  </div>
 
-  <div style="width: 100%; text-align: center;">
-    <img [src]="user.img" width="100rem" height="100rem" alt="" style="margin-top: 2rem; border-radius: 50%">
-    <div style="width: 100%; color: whitesmoke;">
-      {{user.email}}
-    </div>
-  </div>
-
-  <div class="card-footer text-center mt-3">
-    <button class="btn nav-button btn-danger" (click)="logout()">
-      Logout
-    </button>
-  </div>
-</div>
 
 <div class="container p-5" style="background: white; color: black; opacity: 80%;" >
+  <div class="card p-2 mt-5 animated slideInUp mb-5" style="background: transparent; border: solid 0.1rem lightgray;">
+    <div class="card-title text-center mt-2"> 
+      <h2 style="color: gray;">{{user.name}}</h2>
+    </div>
+  
+    <div style="width: 100%; text-align: center;">
+      <img [src]="user.img" width="100rem" height="100rem" alt="" style="margin-top: 2rem; border-radius: 50%">
+      <div style="width: 100%; color: gray;">
+        {{user.email}}
+      </div>
+    </div>
+  
+    <div class="card-footer text-center mt-3">
+      <button class="btn nav-button btn-danger" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </div>
   <h1 class="text-center">WELCOME {{ user.name | uppercase }}</h1>
 <br>
   <div id="lipsum">

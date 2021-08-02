@@ -1,9 +1,10 @@
 <div class="base">
     <div class="base" fxLayout="row">
         <!--- Menu lateral -->
-        <div class="menu animated-fast slideInLeft" fxLayout="column" *ngIf="logged && !isCollapsed">
-            <app-sidebar [user]="user" class="menu p-3" (logout)="logout()"></app-sidebar>
+        <div class="menu animated-fast" [ngClass]="fadeClass" fxLayout="column" *ngIf="logged && !isCollapsed">
+            <app-sidebar [user]="user" class="menu p-3" (logout)="logout()" (onNavigate)="collapse()"></app-sidebar>
         </div>
+        
         <!-- Bloque principal -->
         <div fxLayout="column" class="base">
             <!--- HEADER -->
@@ -17,7 +18,7 @@
                 </div>
 
             <!--CONTENT-->
-            <div fxLayout="row" class="main-content w-100 middle-center" (click)="collapse()">
+            <div fxLayout="row" [ngClass]="{'opacity-z': !isCollapsed}" class="main-content w-100 middle-center" (click)="collapse()">
                 <!-- <h1> Contenido </h1> -->
                 <router-outlet></router-outlet>
             </div>

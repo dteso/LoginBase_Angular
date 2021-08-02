@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   logged: boolean;
   isCollapsed = true;
   user;
+  fadeClass = 'slideInLeft';
 
   constructor(
     private readonly storageService: StorageService,
@@ -28,16 +29,27 @@ export class AppComponent implements OnInit {
   }
 
   toggleCollapse(){
-    this.isCollapsed = !this.isCollapsed;
+    if(!this.isCollapsed){
+      this.fadeClass = 'fadeOutLeft';
+    }else if(this.isCollapsed){
+      this.fadeClass = 'fadeInLeft'
+    }
+    setTimeout(()=>{
+      this.isCollapsed = !this.isCollapsed;
+    }, 200);
     console.log(this.isCollapsed);
+    
   }
 
   collapse(){
-    this.isCollapsed = true;
+    if(!this.isCollapsed){
+      this.toggleCollapse();
+    }
   }
 
   logout(): void {
     this.authService.clearAuth();
     this.router.navigate(['/']);
+    this.isCollapsed = true;
   }
 }

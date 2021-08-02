@@ -19,6 +19,12 @@ const routes: Routes = [
     loadChildren: () => import('./modules/home/home.module').then( m => m.HomeModule)
   },
   {
+    path: 'skills',
+    canActivate: [AuthGuard],
+    runGuardsAndResolvers: 'always',
+    loadChildren: () => import('./modules/pages/skills//skills.module').then( m => m.SkillsModule)
+  },
+  {
     path: '' || '**',
     redirectTo: user? 'home' : 'login',
     pathMatch: 'full'
