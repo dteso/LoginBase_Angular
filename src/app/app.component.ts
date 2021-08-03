@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SwUpdate } from '@angular/service-worker';
 import { AuthService } from './services/auth/auth.service';
 import { StorageService } from './services/storage/storage.service';
+import Swal from 'sweetalert2';
+import { R3TargetBinder } from '@angular/compiler';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,8 +20,10 @@ export class AppComponent implements OnInit {
   constructor(
     private readonly storageService: StorageService,
     private router: Router,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private swUpdate: SwUpdate
   ){
+    this.checkVersionUpdates();
     if(!this.storageService.getItem('USER')) {
       this.router.navigate(['/login']);
      }else this.user = this.storageService.getItem('USER').user;
@@ -52,4 +57,47 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/']);
     this.isCollapsed = true;
   }
+
+  private checkVersionUpdates() {
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.checkForUpdate().then(data => {
+        console.log('Checking for Updates Now...');
+      });
+      this.swUpdate.available.subscribe(event => {
+        if (event.available.appData) {
+          const appData: any = event.available.appData;
+          let msg = `New version ${appData.version} available. Features added:`;
+          msg += `${appData.changelog}.`;
+          msg += ` Reload?`;
+          // if (confirm(msg)) {
+          //   window.location.reload();
+          // }
+          this.showPrompt('warning', `Great incoming changes!!!`, msg);
+        }
+      });
+    }
+  }
+
+  showPrompt(icon: any, title: any, text: any) {
+    Swal.fire({
+      icon,
+      title,
+      text,
+      background: 'black',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, update',
+      confirmButtonColor: 'turquoise',
+      cancelButtonText: "No, later",
+      cancelButtonColor: 'tomato',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Updated!',
+          'Your application was sucessfully updated',
+          'success'
+        )
+      }
+    });
+  }
+
 }
