@@ -12,6 +12,8 @@ import { SidebarModule } from './modules/layout/sidebar/sidebar.module';
 import { HeaderModule } from './modules/layout/header/header.module';
 import { ToolbarModule } from './modules/layout/toolbar/toolbar.module';
 import { LoginModule } from './modules/login/login.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,13 @@ import { LoginModule } from './modules/login/login.module';
     SidebarModule,
     HeaderModule,
     ToolbarModule,
-    LoginModule
+    LoginModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     // HomeResolver,

@@ -1,27 +1,27 @@
-# LoginApp
+PWA
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
+1. Enviroments
 
-## Development server
+enviroments/enviroment.prod.ts
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+api_url: "http://localhost:3000/api"
 
-## Code scaffolding
+2. ng buid
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. npm i -g http-server //instalándolo como dependencia de desarrollo no se ha conseguido hacer funcionar
 
-## Build
+4. ng add @angular/pwa
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* angular.json:
+    - Añade manifest.json en el apartado de assets
+    - Añade flag serviceWorker: true
+    - Añade configuración 'ngswConfigPath' con la ruta del archivo de configuración para el service worker ngsw-worker.js
+* package.json: Añade dependencia a @angular/service-worker
+* index.html:
+    - link a manifest.json
+    - meta theme-color para cuando se "instale" en algún dispositivo
+    - noscript html tag
+* manifest.json: configuración de la aplicación para cuando se "instale" en el dispositivo
+* ngsw-config.json: archivo de configuración y estrategias de cacheo para el service worker que crea angular.
+* app.module.ts: registra e instala el service worker ngsw-worker.js (auto generado por angular basado en ngsw-config.json)
+* icons: iconos en diferentes tamaños para usarse como icono de aplicación cuando se instale en algún dispositivo
