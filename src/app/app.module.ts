@@ -28,7 +28,7 @@ import { LoginModule } from './modules/login/login.module';
     LoginModule
   ],
   providers: [
-    HomeResolver,
+    // HomeResolver,
     AuthService,
     {provide: HTTP_INTERCEPTORS, useClass:HttpInterceptorService, multi: true}
   ],

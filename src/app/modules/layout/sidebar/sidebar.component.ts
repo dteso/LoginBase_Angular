@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/services/storage/storage.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,13 +9,17 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
-  @Input() user;
   @Output() logout: EventEmitter<any> = new EventEmitter();
   @Output() onNavigate: EventEmitter<any> = new EventEmitter();
 
+  user;
+
   constructor(
-    private readonly router: Router
-  ) { }
+    private readonly router: Router,
+    private readonly sessionStorage: StorageService
+  ) { 
+    this.user= this.sessionStorage.getItem('USER').user;
+  }
 
   ngOnInit(): void {
   }
