@@ -93,7 +93,7 @@ export class AppComponent implements OnInit {
       if (result.isConfirmed) {
         Swal.fire(
           'Updated!',
-          'Your application was sucessfully updated',
+          'Your application will be updated in background. Enjoy!',
           'success'
         )
       }
