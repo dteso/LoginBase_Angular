@@ -11,6 +11,7 @@ import { AuthService } from './services/auth/auth.service';
 import { SidebarModule } from './modules/layout/sidebar/sidebar.module';
 import { HeaderModule } from './modules/layout/header/header.module';
 import { ToolbarModule } from './modules/layout/toolbar/toolbar.module';
+import { LoginModule } from './modules/login/login.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ToolbarModule } from './modules/layout/toolbar/toolbar.module';
     FlexLayoutModule,
     SidebarModule,
     HeaderModule,
-    ToolbarModule
+    ToolbarModule,
+    LoginModule
   ],
   providers: [
     HomeResolver,

@@ -14,7 +14,7 @@
                 </div>
                 <!-- cabecera -->
                 <div fxLayout="row" class="header" *ngIf="logged">
-                    <app-header [isCollapsed]="isCollapsed" class="w-100" (toggleMenu)="toggleCollapse()"></app-header>
+                    <app-header [isCollapsed]="isCollapsed" class="w-100" (click)="collapse()" (toggleMenu)="toggleCollapse()"></app-header>
                 </div>
 
             <!--CONTENT-->

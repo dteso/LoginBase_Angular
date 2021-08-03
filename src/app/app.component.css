@@ -7,7 +7,7 @@
 }
 
 .menu{
-    height: 100vh;
+    /* height: 100vh; */
     min-height: 100%;
     width: 15rem;
     background: -webkit-linear-gradient(-90deg, rgb(3, 110, 126) 20%, #04000f 100%);
@@ -68,5 +68,35 @@
 }
 
 .opacity-z{
-    filter: blur(10px);
+    filter: blur(3px);
 }
+
+.main-content::-webkit-scrollbar {
+    width: 10px;     /* Tamaño del scroll en vertical */
+    height: 10px;    /* Tamaño del scroll en horizontal */
+}
+
+/* Cambiamos el fondo cuando esté en active */
+.main-content::-webkit-scrollbar-thumb:active {
+    background-color: rgb(23, 22, 63);
+}
+
+
+/* Ponemos un color de fondo y redondeamos las esquinas del track */
+.main-content::-webkit-scrollbar-track {
+    background: rgb(4, 107, 154);
+    border-radius: 4px;
+    border: 2px solid white;
+}
+
+/* Cambiamos el fondo cuando esté en active o hover */
+.main-content::-webkit-scrollbar-track:hover,
+.main-content::-webkit-scrollbar-track:active {
+  background: rgb(122, 195, 224);
+}
+/* 
+@media screen and (orientation: landscape) {
+    .base{
+        height: 100% !important;
+    }
+} */

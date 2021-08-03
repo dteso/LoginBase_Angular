@@ -34,7 +34,7 @@ export class AuthService {
 
   registerAuth(registerUser){
     this.apiService.post("users",registerUser).subscribe( res=> {
-      console.log(res);
+      //console.log(res);
       this.storageService.setItem("USER",res);
       this.isAuthenticatedSubject$.next(true);
       this.currentUser$ = of(res.user);
@@ -45,7 +45,7 @@ export class AuthService {
 
   tryAuth(loginUser){
     this.apiService.post("login", loginUser).subscribe( res=> {
-      console.log(res);
+      //console.log(res);
       this.storageService.setItem("USER",res);
       this.isAuthenticatedSubject$.next(true);
       this.currentUser$ = of(res.user);
@@ -56,7 +56,7 @@ export class AuthService {
 
   tryGoogleAuth(id_token){
     this.apiService.post("login/google", {id_token}).subscribe( res=> {
-      console.log(res);
+      //console.log(res);
       this.storageService.setItem("USER",res);
       this.isAuthenticatedSubject$.next(true);
       this.currentUser$ = of(res.user);

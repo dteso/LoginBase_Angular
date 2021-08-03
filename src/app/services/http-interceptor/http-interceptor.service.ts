@@ -58,7 +58,7 @@ export class HttpInterceptorService implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         const message = this.manageError(error);
         if (message) {
-          console.log('ERROR', message);
+          //console.log('ERROR', message);
         }
         this.removeRequest(request);
         return throwError(error);
@@ -94,7 +94,7 @@ export class HttpInterceptorService implements HttpInterceptor {
 
   private checkErrorStatus(e) {
     let msg: string;
-    console.log('STATUS: ' + e.status);
+    //console.log('STATUS: ' + e.status);
     switch (e.status) {
       case 0:
         msg = 'Connection error';
@@ -138,6 +138,6 @@ export class HttpInterceptorService implements HttpInterceptor {
   }
 
   private manageInternalErrors(internalError) {
-    console.log(internalError);
+    //console.log(internalError);
   }
 }

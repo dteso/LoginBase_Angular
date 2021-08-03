@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
     setTimeout(()=>{
       this.isCollapsed = !this.isCollapsed;
     }, 200);
-    console.log(this.isCollapsed);
+    //console.log(this.isCollapsed);
     
   }
 

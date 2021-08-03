@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.authState.subscribe((user) => {
       this.socialUser = user;
       this.isGoogleLoggedin = (user != null);
-      console.log(this.socialUser);
+      //console.log(this.socialUser);
     });
     this.loginForm = this.formBuilder.group({
       name: [{value: '', disabled: this.loginView}, Validators.required],
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
         password: this.loginForm.controls.password.value,
         email: this.loginForm.controls.email.value
       }
-      console.info(this.loginUser);
+      //console.info(this.loginUser);
       this.authService.registerAuth(this.loginUser);
       this.isLoggedin = true;
       this.loginForm.reset();
@@ -74,12 +74,12 @@ export class LoginComponent implements OnInit {
         password: this.loginForm.controls.password.value,
         email: this.loginForm.controls.email.value
       }
-      console.info(this.loginUser);
+      //console.info(this.loginUser);
       this.authService.tryAuth(this.loginUser);
       this.loginForm.reset();
       this.submitted = false;
     }
-    console.log(this.loginForm);
+    //console.log(this.loginForm);
     return;
   }
 
@@ -93,7 +93,7 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then( res => {
       this.isGoogleLoggedin=true;
       let id_token = res.idToken;
-      console.log("ID_TOKEN: ", id_token);
+      //console.log("ID_TOKEN: ", id_token);
       this.authService.tryGoogleAuth(id_token);
       this.router.navigate(['/home']);
     });
