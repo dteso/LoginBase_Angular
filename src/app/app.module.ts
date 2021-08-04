@@ -14,10 +14,11 @@ import { ToolbarModule } from './modules/layout/toolbar/toolbar.module';
 import { LoginModule } from './modules/login/login.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { NewsletterService } from './services/newsletter/newsletter.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +39,7 @@ import { environment } from '../environments/environment';
   providers: [
     // HomeResolver,
     AuthService,
+    NewsletterService,
     {provide: HTTP_INTERCEPTORS, useClass:HttpInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent]

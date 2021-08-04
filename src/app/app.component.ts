@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SwUpdate } from '@angular/service-worker';
+import { SwPush, SwUpdate } from '@angular/service-worker';
 import { AuthService } from './services/auth/auth.service';
 import { StorageService } from './services/storage/storage.service';
 import Swal from 'sweetalert2';
-import { R3TargetBinder } from '@angular/compiler';
+import { NewsletterService } from './services/newsletter/newsletter.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,9 +22,12 @@ export class AppComponent implements OnInit {
     private readonly storageService: StorageService,
     private router: Router,
     private readonly authService: AuthService,
-    private swUpdate: SwUpdate
+    private swUpdate: SwUpdate,
+    private swPush: SwPush,
+    private newsletterService: NewsletterService
   ){
     this.checkVersionUpdates();
+    this.subscribeToNotifications();
     if(!this.storageService.getItem('USER')) {
       this.router.navigate(['/login']);
      }else this.user = this.storageService.getItem('USER').user;
@@ -32,6 +36,18 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     this.authService.isAuthenticated$.subscribe( isLogged => this.logged = isLogged);
   }
+
+  subscribeToNotifications() {
+
+    console.info("SUBSCRIBED TO NOTIFICATIONS");
+
+    this.swPush.requestSubscription({
+        serverPublicKey: environment.publicKey
+    })
+    .then(sub => this.newsletterService.addPushSubscriber(sub).subscribe())
+    .catch(err => console.error("Could not subscribe to notifications", err));
+}
+  
 
   toggleCollapse(){
     if(!this.isCollapsed){
